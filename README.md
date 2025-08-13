@@ -345,7 +345,7 @@ Code: AGPL-3.0-or-later | Documentation: CC BY 4.0 | Data: CC BY 4.0
 
 ## References
 
-1. Papadimitropoulos, E. A., Al Ahbabi, S., Al Breiki, M., Blair, I., Katsaiti, M. S., Shah, K. K., & Devlin, N. J. (2024). A value set for EQ-5D-5L in the United Arab Emirates. *Value in Health*, 27(1), 45-54. doi:10.1016/j.jval.2024.11.021
+1. Al Sayah, F., Roudijk, B., El Sadig, M., Al Mannaei, A., Farghaly, M. N., Dallal, S., Kaddoura, R., Metni, M., Elbarazi, I., & Kharroubi, S. A. (2025). A value set for EQ-5D-5L in the United Arab Emirates. Value in Health, 28(4), 611-621.
 
 2. Dubai Health Authority. (2024). Health accounts system of Dubai 2023: Annual report. Dubai: Dubai Health Authority.
 
