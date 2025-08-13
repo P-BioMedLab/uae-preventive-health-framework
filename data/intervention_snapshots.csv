@@ -1,0 +1,7 @@
+disease_area,target_population,roi_percent,icer_aed_per_qaly,events_prevented,premature_deaths_averted,new_diabetes_cases_prevented,complications_prevented,lives_saved,delayed_onset_count,caregiver_burden_reduction_pct,fractures_prevented,net_savings_aed
+CVD Prevention,500000,280,61400,12450.0,3120.0,,,,,,,
+Diabetes Prevention,750000,210,32100,,,127500.0,45900.0,,,,,
+Cancer Screening (CRC),670000,,19700,,,,,,,,,
+Cancer Screening (Breast),456000,,64800,,,,,3100,,,,
+Alzheimer's/Dementia Prevention,30000,,48900,,,,,,2700.0,35.0,,
+Osteoporosis Fracture Prevention,234000,184,,,,,,,,,10530.0,661000000.0

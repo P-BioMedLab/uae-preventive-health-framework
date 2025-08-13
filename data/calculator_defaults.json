@@ -1,0 +1,249 @@
+{
+  "metadata": {
+    "version": "v2025.08",
+    "last_updated": "2025-08-11",
+    "purpose": "Default parameters for UAE Prevention ROI Calculator web interface",
+    "validation_status": "validated_against_white_paper"
+  },
+  "intervention_defaults": {
+    "cardiovascular_disease_prevention": {
+      "display_name": "Cardiovascular Disease Prevention",
+      "target_population_default": 500000,
+      "target_population_min": 50000,
+      "target_population_max": 1000000,
+      "cost_per_person_default": 1893,
+      "cost_per_person_min": 500,
+      "cost_per_person_max": 5000,
+      "uptake_rate_default": 0.75,
+      "uptake_rate_min": 0.30,
+      "uptake_rate_max": 0.90,
+      "effectiveness_default": 0.70,
+      "effectiveness_min": 0.30,
+      "effectiveness_max": 0.85,
+      "baseline_roi": 280,
+      "baseline_cost_per_qaly": 61400,
+      "description": "Comprehensive CVD prevention including statins, hypertension management, and lifestyle interventions"
+    },
+    "diabetes_prevention": {
+      "display_name": "Type 2 Diabetes Prevention",
+      "target_population_default": 750000,
+      "target_population_min": 100000,
+      "target_population_max": 1000000,
+      "cost_per_person_default": 1883,
+      "cost_per_person_min": 800,
+      "cost_per_person_max": 4000,
+      "uptake_rate_default": 0.80,
+      "uptake_rate_min": 0.40,
+      "uptake_rate_max": 0.95,
+      "effectiveness_default": 0.60,
+      "effectiveness_min": 0.35,
+      "effectiveness_max": 0.75,
+      "baseline_roi": 210,
+      "baseline_cost_per_qaly": 32100,
+      "description": "DPP-style lifestyle interventions and metformin for pre-diabetic adults"
+    },
+    "cancer_screening": {
+      "display_name": "Cancer Screening Programs",
+      "target_population_default": 1126000,
+      "target_population_min": 200000,
+      "target_population_max": 1500000,
+      "cost_per_person_default": 1497,
+      "cost_per_person_min": 600,
+      "cost_per_person_max": 3500,
+      "uptake_rate_default": 0.70,
+      "uptake_rate_min": 0.35,
+      "uptake_rate_max": 0.85,
+      "effectiveness_default": 0.55,
+      "effectiveness_min": 0.30,
+      "effectiveness_max": 0.75,
+      "baseline_roi": 185,
+      "baseline_cost_per_qaly": 42250,
+      "description": "Breast and colorectal cancer screening with enhanced uptake strategies"
+    },
+    "osteoporosis_prevention": {
+      "display_name": "Osteoporosis Prevention",
+      "target_population_default": 234000,
+      "target_population_min": 50000,
+      "target_population_max": 400000,
+      "cost_per_person_default": 1202,
+      "cost_per_person_min": 500,
+      "cost_per_person_max": 2500,
+      "uptake_rate_default": 0.75,
+      "uptake_rate_min": 0.40,
+      "uptake_rate_max": 0.90,
+      "effectiveness_default": 0.65,
+      "effectiveness_min": 0.40,
+      "effectiveness_max": 0.80,
+      "baseline_roi": 184,
+      "baseline_cost_per_qaly": 45000,
+      "description": "DEXA screening and targeted treatment for high-risk adults"
+    },
+    "alzheimer_prevention": {
+      "display_name": "Alzheimer's Prevention",
+      "target_population_default": 30000,
+      "target_population_min": 10000,
+      "target_population_max": 100000,
+      "cost_per_person_default": 3487,
+      "cost_per_person_min": 1500,
+      "cost_per_person_max": 6000,
+      "uptake_rate_default": 0.65,
+      "uptake_rate_min": 0.30,
+      "uptake_rate_max": 0.85,
+      "effectiveness_default": 0.50,
+      "effectiveness_min": 0.25,
+      "effectiveness_max": 0.70,
+      "baseline_roi": 160,
+      "baseline_cost_per_qaly": 48900,
+      "description": "MIND diet, cognitive training, and multidomain interventions for high-risk elderly"
+    }
+  },
+  "portfolio_defaults": {
+    "total_investment_billions": 20.4,
+    "total_benefits_billions": 52.4,
+    "net_benefit_billions": 32.0,
+    "portfolio_roi": 257,
+    "portfolio_cost_per_qaly": 62600,
+    "total_events_prevented": 158080,
+    "total_deaths_averted": 16325,
+    "total_qalys_gained": 326280,
+    "break_even_years": 4.2
+  },
+  "calculation_parameters": {
+    "discount_rate": 0.03,
+    "time_horizon_options": [5, 10, 20],
+    "time_horizon_default": 10,
+    "willingness_to_pay_threshold": 150000,
+    "currency": "AED",
+    "base_year": 2025,
+    "perspective": "societal",
+    "include_productivity_costs": true
+  },
+  "sensitivity_analysis": {
+    "tornado_plot_variables": [
+      "intervention_effectiveness",
+      "program_uptake_rate", 
+      "cost_per_person",
+      "discount_rate",
+      "time_horizon"
+    ],
+    "monte_carlo_iterations": 10000,
+    "confidence_interval": 0.95,
+    "parameter_distributions": {
+      "effectiveness": "beta",
+      "costs": "gamma", 
+      "utilities": "beta",
+      "probabilities": "beta"
+    }
+  },
+  "user_interface": {
+    "slider_steps": {
+      "population": 10000,
+      "cost": 50,
+      "percentage": 0.01
+    },
+    "default_chart_colors": {
+      "investment": "#e74c3c",
+      "benefits": "#27ae60",
+      "net_benefit": "#3498db",
+      "roi_positive": "#27ae60",
+      "roi_negative": "#e74c3c"
+    },
+    "display_formats": {
+      "currency_billions": "AED {value}B",
+      "currency_thousands": "AED {value:,}",
+      "percentage": "{value}%",
+      "large_numbers": "{value:,}"
+    }
+  },
+  "validation_thresholds": {
+    "cost_effectiveness": {
+      "highly_cost_effective": 50000,
+      "cost_effective": 150000,
+      "potentially_cost_effective": 200000
+    },
+    "roi_categories": {
+      "excellent": 200,
+      "very_good": 100,
+      "good": 50,
+      "acceptable": 20
+    },
+    "sensitivity_flags": {
+      "high_uncertainty": 0.5,
+      "moderate_uncertainty": 0.3,
+      "low_uncertainty": 0.15
+    }
+  },
+  "help_text": {
+    "target_population": "Total number of individuals eligible for the intervention. Based on UAE demographics and disease prevalence.",
+    "cost_per_person": "Average cost per participant including screening, intervention delivery, and program overhead.",
+    "uptake_rate": "Percentage of eligible population that participates in the program. Based on international experience and UAE pilot data.",
+    "effectiveness": "Relative reduction in disease incidence or progression. Based on clinical trial evidence adapted for UAE context.",
+    "time_horizon": "Analysis period for calculating returns. Longer horizons capture more benefits but increase uncertainty.",
+    "discount_rate": "Annual rate for converting future costs and benefits to present value. 3% is standard for UAE health economics.",
+    "roi": "Return on investment: (Benefits - Investment) / Investment × 100%. Measures financial return over specified time period.",
+    "cost_per_qaly": "Cost per Quality-Adjusted Life Year gained. Primary measure for health technology assessment in UAE.",
+    "break_even": "Time point when cumulative benefits equal cumulative costs. Earlier break-even indicates better investment.",
+    "sensitivity_analysis": "Tests how results change when key assumptions are varied. Shows robustness of findings."
+  },
+  "scenario_presets": {
+    "conservative": {
+      "effectiveness_multiplier": 0.8,
+      "uptake_multiplier": 0.8,
+      "cost_multiplier": 1.2,
+      "description": "Conservative assumptions for cautious planning"
+    },
+    "optimistic": {
+      "effectiveness_multiplier": 1.2,
+      "uptake_multiplier": 1.1,
+      "cost_multiplier": 0.9,
+      "description": "Optimistic assumptions based on best-case outcomes"
+    },
+    "realistic": {
+      "effectiveness_multiplier": 1.0,
+      "uptake_multiplier": 1.0,
+      "cost_multiplier": 1.0,
+      "description": "Baseline assumptions based on best available evidence"
+    }
+  },
+  "health_authority_multipliers": {
+    "national": {
+      "population_multiplier": 1.0,
+      "cost_multiplier": 1.0,
+      "description": "All Emirates combined"
+    },
+    "dubai": {
+      "population_multiplier": 0.25,
+      "cost_multiplier": 1.20,
+      "description": "Dubai Health Authority"
+    },
+    "abu_dhabi": {
+      "population_multiplier": 0.30,
+      "cost_multiplier": 1.15,
+      "description": "Department of Health - Abu Dhabi"
+    },
+    "seha": {
+      "population_multiplier": 0.20,
+      "cost_multiplier": 1.05,
+      "description": "SEHA Health System"
+    },
+    "private": {
+      "population_multiplier": 0.35,
+      "cost_multiplier": 1.35,
+      "description": "Private Sector Focus"
+    }
+  },
+  "update_log": [
+    {
+      "date": "2025-08-11",
+      "version": "v2025.08",
+      "changes": [
+        "Initial release with white paper validation",
+        "All intervention defaults calibrated to UAE context",
+        "Sensitivity analysis parameters established",
+        "User interface defaults optimized for policy use",
+        "Standardized terminology to 'deaths_averted' throughout",
+        "Fixed health outcome aggregations to match white paper"
+      ]
+    }
+  ]
+}
