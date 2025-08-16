@@ -10,7 +10,7 @@ This document outlines how the UAE Preventive Health Investment Framework aligns
 ### 1.1 "We the UAE 2031" Vision
 **Alignment Points:**
 - **Health Priority**: "A society that enjoys good health, quality of life, and balanced social and economic levels"
-- **Framework Contribution**: 257% ROI demonstrates economic sustainability of health investments
+- **Framework Contribution**: 157% ROI demonstrates economic sustainability of health investments
 - **Measurable Impact**: 16,325 deaths averted directly supports population wellbeing goals
 
 ### 1.2 UAE Centennial 2071
