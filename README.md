@@ -1,6 +1,6 @@
 # UAE Preventive Health Investment Framework
 
-A comprehensive data-driven framework demonstrating 257% return on investment for preventive medicine investments across five major disease areas in the United Arab Emirates.
+A comprehensive data-driven framework demonstrating 157% return on investment for preventive medicine investments across five major disease areas in the United Arab Emirates.
 
 ## Interactive Tools and Resources
 
@@ -27,7 +27,7 @@ The UAE faces significant health challenges with non-communicable diseases (NCDs
 
 | Outcome Measure | 10-Year Projection | Clinical Impact |
 |---|---|---|
-| Return on Investment | 257% | AED 20.4B investment → AED 52.4B benefit |
+| Return on Investment | 157% | AED 20.4B investment → AED 52.4B benefit |
 | Premature Deaths Averted | 16,325 | Population health improvement |
 | Major Events Prevented | 158,080 | Healthcare system capacity relief |
 | Quality-Adjusted Life Years | 326,280 | Population wellbeing enhancement |
@@ -40,7 +40,7 @@ The analysis is based on UAE-specific epidemiological data and international cli
 
 ### 1. Cardiovascular Disease Prevention
 **Target Population:** 500,000 high-risk adults  
-**Economic Outcome:** 280% ROI, AED 61,400 per QALY
+**Economic Outcome:** 180% ROI, AED 61,400 per QALY
 
 | Intervention | Annual Cost | Evidence Base | 10-Year Impact |
 |---|---|---|---|
@@ -50,7 +50,7 @@ The analysis is based on UAE-specific epidemiological data and international cli
 
 ### 2. Type 2 Diabetes Prevention
 **Target Population:** 750,000 pre-diabetic adults  
-**Economic Outcome:** 210% ROI, AED 32,100 per QALY
+**Economic Outcome:** 110% ROI, AED 32,100 per QALY
 
 | Intervention | Program Cost | Evidence Base | 10-Year Impact |
 |---|---|---|---|
@@ -60,7 +60,7 @@ The analysis is based on UAE-specific epidemiological data and international cli
 
 ### 3. Cancer Screening Programs
 **Target Population:** 1.1M eligible adults  
-**Economic Outcome:** 185% ROI, AED 42,250 per QALY
+**Economic Outcome:** 85% ROI, AED 42,250 per QALY
 
 | Screening Method | Cost per Test | Evidence Base | 10-Year Impact |
 |---|---|---|---|
@@ -70,7 +70,7 @@ The analysis is based on UAE-specific epidemiological data and international cli
 
 ### 4. Osteoporosis Prevention
 **Target Population:** 234,000 at-risk adults  
-**Economic Outcome:** 184% ROI, cost-saving for population aged 75+
+**Economic Outcome:** 84% ROI, cost-saving for population aged 75+
 
 | Intervention | Screening Cost | Evidence Base | 10-Year Impact |
 |---|---|---|---|
@@ -79,7 +79,7 @@ The analysis is based on UAE-specific epidemiological data and international cli
 
 ### 5. Alzheimer's Disease Prevention
 **Target Population:** 30,000 high-risk elderly  
-**Economic Outcome:** 160% ROI, AED 48,900 per QALY
+**Economic Outcome:** 60% ROI, AED 48,900 per QALY
 
 | Intervention | Annual Cost | Evidence Base | 5-Year Impact |
 |---|---|---|---|
@@ -173,7 +173,7 @@ These limitations are inherent to health economic modeling and do not invalidate
 
 | UAE Health Initiative | Framework Alignment | Quantified Contribution |
 |---|---|---|
-| "We the UAE 2031" | Prevention-focused healthcare vision | 257% ROI demonstration |
+| "We the UAE 2031" | Prevention-focused healthcare vision | 157% ROI demonstration |
 | UAE Centennial 2071 | Long-term prosperity through health investment | 326,000 QALYs over 10 years |
 | MOHAP Strategic Plan | Integrated preventive healthcare approach | Evidence-based resource allocation |
 | Healthy Lifestyles Policy (2022) | NCD prevention targeting | 158,000 disease events prevented |
