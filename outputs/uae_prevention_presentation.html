@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE Preventive Health Investment Framework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            padding: 40px 60px;
+            background: white;
+            position: relative;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .uae-flag {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.4em;
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .content-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+        }
+
+        .metric-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .bullet-points {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bullet-points li {
+            padding: 15px 0;
+            border-bottom: 1px solid #ecf0f1;
+            font-size: 1.1em;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .bullet-points li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .intervention-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .intervention-card {
+            background: white;
+            border: 2px solid #ecf0f1;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .intervention-card:hover {
+            border-color: #3498db;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .intervention-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .intervention-roi {
+            font-size: 2em;
+            font-weight: 700;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        .intervention-details {
+            font-size: 0.95em;
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .nav-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-indicator {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .title-slide {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+        }
+
+        .title-slide h1 {
+            color: white;
+            font-size: 3.5em;
+        }
+
+        .title-slide .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.6em;
+        }
+
+        .roi-highlight {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .roi-highlight h2 {
+            color: white;
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            margin: 40px 0;
+            padding: 0 20px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .timeline-marker {
+            background: white;
+            border: 3px solid #3498db;
+            color: #2c3e50;
+            padding: 15px 20px;
+            border-radius: 15px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .timeline-marker.break-even {
+            background: #f39c12;
+            border-color: #f39c12;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 20px 30px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            h2 {
+                font-size: 1.8em;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .metric-showcase {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .intervention-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .timeline-line {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide active title-slide">
+            <div class="slide-number">1 / 15</div>
+            <div class="uae-flag">🇦🇪</div>
+            <h1>A Data-Driven Investment Framework for Enhancing Preventive Health in the UAE</h1>
+            <p class="subtitle">Transforming Healthcare Through Evidence-Based Prevention</p>
+            <p style="margin-top: 40px; font-size: 1.2em; opacity: 0.8;">Comprehensive Economic Analysis & ROI Calculator</p>
+        </div>
+
+        <!-- Slide 2: Executive Summary -->
+        <div class="slide">
+            <div class="slide-number">2 / 15</div>
+            <h2>Executive Summary</h2>
+            <div class="content-grid">
+                <div class="content-section">
+                    <h3>The Opportunity</h3>
+                    <ul class="bullet-points">
+                        <li>UAE faces rising chronic disease burden: 55-68% of deaths</li>
+                        <li>Current spending: 57% curative care vs. 1% prevention</li>
+                        <li>Strategic misalignment with "We the UAE 2031" vision</li>
+                        <li>Economic impact: AED 39.9B annually (2.7% of GDP)</li>
+                    </ul>
+                </div>
+                <div class="content-section">
+                    <h3>The Solution</h3>
+                    <ul class="bullet-points">
+                        <li>Comprehensive prevention portfolio across 5 NCDs</li>
+                        <li>Data-driven ROI Calculator for decision-making</li>
+                        <li>Alignment with HTA guidelines and value-based care</li>
+                        <li>Public-private partnership framework</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Key Results Overview -->
+        <div class="slide">
+            <div class="slide-number">3 / 15</div>
+            <h2>Transformational Results</h2>
+            <div class="metric-showcase">
+                <div class="metric-card">
+                    <div class="metric-value">157%</div>
+                    <div class="metric-label">Return on Investment</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">AED 32.0B</div>
+                    <div class="metric-label">Net Societal Benefit</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">158,080</div>
+                    <div class="metric-label">Disease Events Prevented</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">16,325</div>
+                    <div class="metric-label">Deaths Averted</div>
+                </div>
+            </div>
+            <div class="roi-highlight">
+                <h2>AED 20.4B Investment → AED 52.4B Benefits</h2>
+                <p style="font-size: 1.3em; margin-top: 15px;">Every AED invested returns AED 2.57 over 10 years</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: The Challenge - NCDs in UAE -->
+        <div class="slide">
+            <div class="slide-number">4 / 15</div>
+            <h2>The Growing NCD Challenge</h2>
+            <div class="content-grid">
+                <div class="content-section">
+                    <h3>Cardiovascular Disease</h3>
+                    <ul class="bullet-points">
+                        <li>34% of NCD deaths, 25% of all deaths</li>
+                        <li>First cardiac event at age 45 (vs. global 55-65)</li>
+                        <li>22.4% hypertension in young adults</li>
+                        <li>Economic impact: AED 26B annually</li>
+                    </ul>
+                </div>
+                <div class="content-section">
+                    <h3>Diabetes & Obesity</h3>
+                    <ul class="bullet-points">
+                        <li>12.3-20.7% diabetes prevalence (world's highest)</li>
+                        <li>35-64% undiagnosed cases</li>
+                        <li>25% adult obesity, 40% childhood overweight</li>
+                        <li>Projected costs: AED 12.49B by 2031</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Current Resource Allocation -->
+        <div class="slide">
+            <div class="slide-number">5 / 15</div>
+            <h2>Resource Allocation Opportunity</h2>
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h3>Dubai Health Expenditure 2023: AED 22.24 Billion</h3>
+            </div>
+            <div class="metric-showcase">
+                <div class="metric-card" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                    <div class="metric-value">57%</div>
+                    <div class="metric-label">Curative Care<br>AED 12.68B</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">
+                    <div class="metric-value">1%</div>
+                    <div class="metric-label">Preventive Care<br>AED 167M</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%);">
+                    <div class="metric-value">42%</div>
+                    <div class="metric-label">Other Services<br>AED 9.34B</div>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 1.3em; color: #e74c3c; margin-top: 30px;">
+                <strong>Strategic Misalignment:</strong> Prevention receives 1% despite being core to national vision
+            </p>
+        </div>
+
+        <!-- Slide 6: Intervention Portfolio -->
+        <div class="slide">
+            <div class="slide-number">6 / 15</div>
+            <h2>High-Impact Intervention Portfolio</h2>
+            <div class="intervention-grid">
+                <div class="intervention-card">
+                    <div class="intervention-title">Cardiovascular Disease Prevention</div>
+                    <div class="intervention-roi">180% ROI</div>
+                    <div class="intervention-details">
+                        Target: 500K high-risk adults<br>
+                        Cost/QALY: AED 61,400<br>
+                        Events prevented: 12,450
+                    </div>
+                </div>
+                <div class="intervention-card">
+                    <div class="intervention-title">Type 2 Diabetes Prevention</div>
+                    <div class="intervention-roi">110% ROI</div>
+                    <div class="intervention-details">
+                        Target: 750K pre-diabetic adults<br>
+                        Cost/QALY: AED 32,100<br>
+                        Cases prevented: 127,500
+                    </div>
+                </div>
+                <div class="intervention-card">
+                    <div class="intervention-title">Cancer Screening</div>
+                    <div class="intervention-roi">185% ROI</div>
+                    <div class="intervention-details">
+                        Breast & Colorectal programs<br>
+                        Cost/QALY: AED 42,250<br>
+                        Deaths averted: 3,100
+                    </div>
+                </div>
+                <div class="intervention-card">
+                    <div class="intervention-title">Osteoporosis Prevention</div>
+                    <div class="intervention-roi">84% ROI</div>
+                    <div class="intervention-details">
+                        Target: 234K at-risk adults<br>
+                        Cost-saving intervention<br>
+                        Fractures prevented: 10,530
+                    </div>
+                </div>
+                <div class="intervention-card">
+                    <div class="intervention-title">Alzheimer's Prevention</div>
+                    <div class="intervention-roi">60% ROI</div>
+                    <div class="intervention-details">
+                        Target: 30K high-risk elderly<br>
+                        Cost/QALY: AED 48,900<br>
+                        Onset delayed: 2,700 cases
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Cost-Effectiveness Analysis -->
+        <div class="slide">
+            <div class="slide-number">7 / 15</div>
+            <h2>Exceptional Cost-Effectiveness</h2>
+            <div class="roi-highlight">
+                <h2>AED 62,600 per QALY</h2>
+                <p style="font-size: 1.4em; margin-top: 15px;">Well below UAE threshold of AED 150,000/QALY</p>
+            </div>
+            <div class="content-grid">
+                <div class="content-section">
+                    <h3>Health Outcomes</h3>
+                    <ul class="bullet-points">
+                        <li>326,280 Quality-Adjusted Life Years gained</li>
+                        <li>300,000+ years of life in better health</li>
+                        <li>All interventions proven cost-effective</li>
+                        <li>98.7% probability of cost-effectiveness</li>
+                    </ul>
+                </div>
+                <div class="content-section">
+                    <h3>Economic Benefits</h3>
+                    <ul class="bullet-points">
+                        <li>AED 40.5B in direct healthcare savings</li>
+                        <li>AED 11.9B in productivity gains</li>
+                        <li>Reduced insurance premiums for employers</li>
+                        <li>Enhanced economic competitiveness</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Break-Even Analysis -->
+        <div class="slide">
+            <div class="slide-number">8 / 15</div>
+            <h2>Break-Even Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-marker">
+                    <strong>Year 1</strong><br>
+                    <small>Initial Investment</small>
+                </div>
+                <div class="timeline-marker break-even">
+                    <strong>Year 4</strong><br>
+                    <small>Break-Even Point</small>
+                </div>
+                <div class="timeline-marker">
+                    <strong>Year 7</strong><br>
+                    <small>2x Return</small>
+                </div>
+                <div class="timeline-marker">
+                    <strong>Year 10</strong><br>
+                    <small>157% ROI</small>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <h3 style="color: #f39c12;">Investment becomes cost-neutral in 4.2 years</h3>
+                <p style="font-size: 1.2em; margin-top: 20px;">
+                    Early break-even demonstrates strong financial case for prevention
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Precision Medicine & Innovation -->
+        <div class="slide">
+            <div class="slide-number">9 / 15</div>
+            <h2>Next Frontier: Precision Medicine</h2>
+            <div class="content-grid">
+                <div class="content-section">
+                    <h3>Emirati Genome Programme</h3>
+                    <ul class="bullet-points">
+                        <li>1 million Emirati genomes sequenced</li>
+                        <li>Population-specific disease risk identification</li>
+                        <li>Partnership with M42 for AI-driven insights</li>
+                        <li>800+ cardiovascular genes assessed</li>
+                    </ul>
+                </div>
+                <div class="content-section">
+                    <h3>Advanced Technologies</h3>
+                    <ul class="bullet-points">
+                        <li>Pharmacogenomics for personalized treatment</li>
+                        <li>Liquid biopsies for cancer screening</li>
+                        <li>P-tau217 blood tests for Alzheimer's</li>
+                        <li>AI-enhanced diagnostic capabilities</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                <h3>From Population Averages to Personalized Prevention</h3>
+            </div>
+        </div>
+
+        <!-- Slide 10: ROI Calculator Overview -->
+        <div class="slide">
+            <div class="slide-number">10 / 15</div>
+            <h2>Strategic Enabler: ROI Calculator</h2>
+            <div class="content-grid">
+                <div class="content-section">
+                    <h3>Core Capabilities</h3>
+                    <ul class="bullet-points">
+                        <li>Dynamic scenario modeling</li>
+                        <li>Real-time cost-benefit analysis</li>
+                        <li>Interactive dashboard interface</li>
+                        <li>Sensitivity analysis & risk assessment</li>
+                    </ul>
+                </div>
+                <div class="content-section">
+                    <h3>Strategic Applications</h3>
+                    <ul class="bullet-points">
+                        <li>Budget allocation optimization</li>
+                        <li>HTA compliance and reporting</li>
+                        <li>Public-private partnership design</li>
+                        <li>Policy impact quantification</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border-radius: 15px;">
+                <h3>Transforms prevention from cost center to investment opportunity</h3>
+            </div>
+        </div>
+
+        <!-- Slide 11: Modular Architecture -->
+        <div class="slide">
+            <div class="slide-number">11 / 15</div>
+            <h2>Calculator Architecture</h2>
+            <div class="intervention-grid">
+                <div class="intervention-card">
+                    <div class="intervention-title">Module 1</div>
+                    <div class="intervention-roi">Intervention Cost Engine</div>
+                    <div class="intervention-details">
+                        Direct costs, programmatic expenses, societal investments, training & infrastructure
+                    </div>
+                </div>
+                <div class="intervention-card">
+                    <div class="intervention-title">Module 2</div>
+                    <div class="intervention-roi">Avoided Cost Simulation</div>
+                    <div class="intervention-details">
+                        Disease progression models, UAE-specific costs, future savings projection
+                    </div>
+                </div>
+                <div class="intervention-card">
+                    <div class="intervention-title">Module 3</div>
+                    <div class="intervention-roi">Health Quality Engine</div>
+                    <div class="intervention-details">
+                        QALY calculations, EQ-5D-5L UAE values, quality of life improvements
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <h3>Validated through 10,000-iteration probabilistic sensitivity analysis</h3>
+                <p style="font-size: 1.1em; margin-top: 15px; color: #27ae60;">
+                    <strong>94% accuracy</strong> in calibration to UAE epidemiological data
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 12: Implementation Roadmap -->
+        <div class="slide">
+            <div class="slide-number">12 / 15</div>
+            <h2>Phased Implementation Strategy</h2>
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-marker">
+                    <strong>Phase 1</strong><br>
+                    <small>Months 1-9<br>Development & Validation</small>
+                </div>
+                <div class="timeline-marker">
+                    <strong>Phase 2</strong><br>
+                    <small>Months 10-18<br>Pilot & Refinement</small>
+                </div>
+                <div class="timeline-marker">
+                    <strong>Phase 3</strong><br>
+                    <small>Months 19-24+<br>National Integration</small>
+                </div>
+            </div>
+            <div class="content-grid" style="margin-top: 40px;">
+                <div class="content-section">
+                    <h3>Key Partnerships</h3>
+                    <ul class="bullet-points">
+                        <li>MOHAP, DHA, DoH collaboration</li>
+                        <li>NABIDH & Malaffi data integration</li>
+                        <li>Multi-disciplinary expert team</li>
+                        <li>Dedicated governance structure</li>
+                    </ul>
+                </div>
+                <div class="content-section">
+                    <h3>Success Metrics</h3>
+                    <ul class="bullet-points">
+                        <li>Policy mandate integration</li>
+                        <li>HTA compliance achievement</li>
+                        <li>Stakeholder adoption rates</li>
+                        <li>Decision-making impact</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Public-Private Partnerships -->
+        <div class="slide">
+            <div class="slide-number">13 / 15</div>
+            <h2>Catalyzing Business Investment</h2>
+            <div class="roi-highlight">
+                <h2>Unique UAE Advantage</h2>
+                <p style="font-size: 1.3em; margin-top: 15px;">Mandatory employer health insurance creates direct ROI for business</p>
+            </div>
+            <div class="content-grid">
+                <div class="content-section">
+                    <h3>Business Case</h3>
+                    <ul class="bullet-points">
+                        <li>Rising NCD costs = higher insurance premiums</li>
+                        <li>Employee health directly impacts bottom line</li>
+                        <li>Reduced absenteeism & increased productivity</li>
+                        <li>Corporate wellness ROI quantification</li>
+                    </ul>
+                </div>
+                <div class="content-section">
+                    <h3>Partnership Opportunities</h3>
+                    <ul class="bullet-points">
+                        <li>Co-funded prevention programs</li>
+                        <li>Workplace health initiatives</li>
+                        <li>Shared risk & benefit models</li>
+                        <li>Innovation collaboration platforms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Recommendations & Call to Action -->
+        <div class="slide">
+            <div class="slide-number">14 / 15</div>
+            <h2>Immediate Actions Required</h2>
+            <div class="metric-showcase">
+                <div class="metric-card" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                    <div class="metric-value">1</div>
+                    <div class="metric-label">Authorize ROI Calculator Development</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">
+                    <div class="metric-value">2</div>
+                    <div class="metric-label">Enact National Prevention Act</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%);">
+                    <div class="metric-value">3</div>
+                    <div class="metric-label">Commit AED 4.5B Annual Budget</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                    <div class="metric-value">4</div>
+                    <div class="metric-label">Launch Public-Private Alliance</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px; padding: 30px; background: #f8f9fa; border-radius: 15px;">
+                <h3 style="color: #2c3e50;">The evidence is clear. The path is defined. The time is now.</h3>
+                <p style="font-size: 1.2em; margin-top: 15px; color: #7f8c8d;">
+                    Transform healthcare from reactive treatment to proactive prevention
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 15: Thank You -->
+        <div class="slide title-slide">
+            <div class="slide-number">15 / 15</div>
+            <div class="uae-flag">🇦🇪</div>
+            <h1>Thank You</h1>
+            <p class="subtitle">Investing in Prevention. Securing the Future.</p>
+            <div style="margin-top: 50px; font-size: 1.1em; opacity: 0.8;">
+                <p><strong>157% ROI | AED 32.0B Net Benefit | 16,325 Deaths Averted</strong></p>
+                <p style="margin-top: 20px;">Questions & Discussion</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-button" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+        <button class="nav-button" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <!-- Slide Indicator -->
+    <div class="slide-indicator" id="slideIndicator">1 / 15</div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            
+            // Update slide indicator
+            document.getElementById('slideIndicator').textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        function changeSlide(direction) {
+            if (direction === 1 && currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            } else if (direction === -1 && currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                changeSlide(1);
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                changeSlide(-1);
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                showSlide(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                showSlide(totalSlides - 1);
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
