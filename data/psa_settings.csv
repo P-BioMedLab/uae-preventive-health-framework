@@ -1,7 +1,0 @@
-setting,value
-psa_iterations,10000.0
-ceac_wtp_aed_per_qaly,150000.0
-ceac_prob_cost_effective,0.987
-icer_mean_aed_per_qaly,61800.0
-icer_ci95_low,34500.0
-icer_ci95_high,98700.0

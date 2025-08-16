@@ -1,7 +1,0 @@
-parameter,value,unit,notes
-perspective,societal,,"Includes direct medical, non-medical, productivity, caregiver burden"
-discount_rate,0.03,per_year,Applied to both costs and QALYs
-wtp_threshold_aed_per_qaly,150000,AED/QALY,Benchmark threshold used for CEAC point
-cycle_length_years,1,years,Annual cycles
-time_horizon_years_headline,10,years,Horizon for headline ROI & impact results
-model_horizon_years_methods,20,years,Methods section mentions 20-year model horizon; headline results reported at 10 years
