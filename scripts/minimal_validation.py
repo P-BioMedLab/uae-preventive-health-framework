@@ -11,12 +11,12 @@ import json
 import math
 
 def validate_core_roi_calculation():
-    """Validate the headline 257% ROI calculation"""
+    """Validate the headline 157% ROI calculation"""
     
     # Core portfolio parameters (from white paper)
     total_investment = 20.4  # AED billions
     total_benefits = 52.4    # AED billions
-    expected_roi = 257       # percentage
+    expected_roi = 157       # percentage
     
     # Calculate ROI
     calculated_roi = round(((total_benefits - total_investment) / total_investment) * 100)
@@ -35,11 +35,11 @@ def validate_intervention_parameters():
     
     # Intervention data from framework
     interventions = {
-        'cvd': {'investment': 0.71, 'benefits': 1.99, 'expected_roi': 280},
-        'diabetes': {'investment': 1.13, 'benefits': 2.37, 'expected_roi': 210},
-        'cancer': {'investment': 1.18, 'benefits': 2.18, 'expected_roi': 185},
-        'osteoporosis': {'investment': 0.211, 'benefits': 0.389, 'expected_roi': 184},
-        'alzheimer': {'investment': 0.068, 'benefits': 0.108, 'expected_roi': 160}
+        'cvd': {'investment': 0.71, 'benefits': 1.99, 'expected_roi': 180},
+        'diabetes': {'investment': 1.13, 'benefits': 2.37, 'expected_roi': 110},
+        'cancer': {'investment': 1.18, 'benefits': 2.18, 'expected_roi': 85},
+        'osteoporosis': {'investment': 0.211, 'benefits': 0.389, 'expected_roi': 84},
+        'alzheimer': {'investment': 0.068, 'benefits': 0.108, 'expected_roi': 60}
     }
     
     print("\n=== Individual Intervention Validation ===")
