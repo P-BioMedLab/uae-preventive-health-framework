@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "UAE Preventive Health Investment Framework"
+authors:
+  - family-names: "B."
+    given-names: "P."
+version: "1.0.0"
+date-released: "2025-01-15"
+url: "https://github.com/P-BioMedLab/uae-preventive-health-framework"
+repository-code: "https://github.com/P-BioMedLab/uae-preventive-health-framework"
+license: "AGPL-3.0-or-later"
+keywords:
+  - "health economics"
+  - "preventive medicine"
+  - "United Arab Emirates"
+  - "cost-effectiveness analysis"
+  - "health technology assessment"
+  - "public health policy"
+  - "economic evaluation"
+  - "Markov modeling"
+abstract: "A comprehensive economic evaluation framework examining preventive medicine investments across five major disease areas in the United Arab Emirates. The analysis employs disease-specific Markov cohort models calibrated with UAE-specific epidemiological data and international clinical trial evidence, validated through probabilistic sensitivity analysis."
+preferred-citation:
+  type: generic
+  title: "A Data-Driven Economic Evaluation of Preventive Health Investments in the United Arab Emirates"
+  authors:
+    - family-names: "B."
+      given-names: "P."
+  year: 2025
+  url: "https://github.com/P-BioMedLab/uae-preventive-health-framework"
+  abstract: "Comprehensive economic analysis demonstrating 157% return on investment for preventive medicine interventions across five major disease areas in the UAE, with 16,325 premature deaths averted and 326,280 quality-adjusted life years gained over a 10-year horizon."
