@@ -1,0 +1,27 @@
+item,disease_area,cost_min_aed,cost_max_aed,unit
+Coronary Artery Bypass Graft (CABG),CVD,90000.0,200000,per procedure
+Coronary Angioplasty (PCI),CVD,30317.0,63270,per procedure
+Acute Ischemic Stroke (hospitalization),CVD,36700.0,183500,per hospitalization
+Stroke Rehabilitation,CVD,590.0,590,per session
+Uncomplicated Type 2 Diabetes (annual),Diabetes,9200.0,9200,per patient-year
+Diabetic Foot Ulcer (episode),Diabetes,3585.0,3585,per episode
+Cost multiplier: microvascular complications,Diabetes,2.2,2.2,x baseline
+Cost multiplier: macrovascular complications,Diabetes,6.4,6.4,x baseline
+FIT test (screening),Colorectal Cancer,100.0,200,per test
+Screening Colonoscopy,Colorectal Cancer,3000.0,5000,per procedure
+Screening Mammogram,Breast Cancer,500.0,1000,per procedure
+Breast Cancer Treatment (overall annual),Breast Cancer,33000.0,62500,per patient-year
+Comprehensive Home Care (12 hrs/day),Alzheimer's/Dementia,144000.0,216000,per year
+Full-time Live-in Dementia Care,Alzheimer's/Dementia,96000.0,180000,per year
+Assisted Living Facility,Alzheimer's/Dementia,180000.0,300000,per year
+Specialized Nursing Home/Memory Care Unit,Alzheimer's/Dementia,240000.0,480000,per year
+"Total Direct Cost of Dementia (UAE, 2021)",Alzheimer's/Dementia,3890000000.0,3890000000,annual total
+DEXA Scan,Osteoporosis,500.0,1000,per scan
+Annual Vitamin D/Calcium,Osteoporosis,300.0,600,per patient-year
+Annual Bisphosphonate Therapy (generic),Osteoporosis,500.0,1000,per patient-year
+ORIF for Hip Fracture,Osteoporosis,35600.0,,per procedure
+Annual Long-term Care Post-Fracture,Osteoporosis,240000.0,,per patient-year
+Annual Statin Therapy (generic),CVD Prevention,500.0,1000,per patient-year
+Annual Hypertension Management,CVD Prevention,1000.0,1500,per patient-year
+Intensive Lifestyle Program,Diabetes Prevention,1890.0,1890,per patient per program
+Annual Metformin Therapy,Diabetes Prevention,300.0,500,per patient-year

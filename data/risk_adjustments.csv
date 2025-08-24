@@ -1,0 +1,4 @@
+parameter,value,notes
+cvd_summer_event_multiplier,1.23,~23% higher events during summer months
+diabetes_familial_risk_multiplier,1.3,Applied for prevalent familial risk factors
+vitamin_d_deficiency_adjustment,,Described qualitatively; numeric magnitude not specified in paper

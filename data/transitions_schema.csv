@@ -1,0 +1,5 @@
+disease_area,from_state,to_state,annual_prob,notes
+Generic,Healthy,At_Risk,,Calibrate to match prevalence/incidence targets
+Generic,At_Risk,Diagnosed,,Calibrate to incidence
+Generic,Diagnosed,Complications,,Disease-specific rates
+Generic,Any,Death,,All-cause + excess disease mortality

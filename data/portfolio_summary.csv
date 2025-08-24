@@ -1,0 +1,11 @@
+metric,value
+total_investment_aed,20400000000
+direct_healthcare_savings_aed,40500000000
+societal_savings_productivity_aed,11900000000
+total_benefits_aed,52400000000
+net_benefit_aed,32000000000
+roi_percent,257
+major_disease_events_prevented,158080
+premature_deaths_averted,16325
+qalys_gained,326280
+aggregate_cost_per_qaly_aed,62600

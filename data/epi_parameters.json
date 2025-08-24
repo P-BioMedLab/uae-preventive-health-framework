@@ -1,0 +1,227 @@
+{
+  "metadata": {
+    "version": "v2025.08",
+    "last_updated": "2025-08-11",
+    "source": "UAE health statistics compilation and peer-reviewed literature",
+    "validation_status": "peer_reviewed",
+    "geographic_scope": "United Arab Emirates",
+    "data_quality": "publicly_available_aggregated_statistics"
+  },
+  "population_demographics": {
+    "total_population": 9441000,
+    "adult_population_18plus": 7500000,
+    "age_structure": {
+      "18_44": 4200000,
+      "45_64": 2100000,
+      "65_74": 600000,
+      "75_plus": 300000
+    },
+    "gender_distribution": {
+      "male": 0.69,
+      "female": 0.31
+    },
+    "expatriate_percentage": 0.88,
+    "emirati_percentage": 0.12
+  },
+  "cardiovascular_disease": {
+    "prevalence_adult": 0.31,
+    "prevalence_hypertension": 0.31,
+    "prevalence_young_adults_hypertension": 0.224,
+    "prevalence_dyslipidemia": 0.627,
+    "prevalence_central_obesity": 0.225,
+    "onset_age_mean": 45,
+    "onset_age_global_comparison": "55-65",
+    "annual_incidence_per_1000": 12.5,
+    "mortality_rate_ncd_deaths": 0.34,
+    "mortality_rate_all_deaths": 0.25,
+    "hypertension_awareness_rate": 0.29,
+    "hypertension_control_rate": 0.38,
+    "risk_factors": {
+      "smoking_males": 0.216,
+      "smoking_females": 0.019,
+      "physical_inactivity": 0.39,
+      "unhealthy_diet": 0.65
+    },
+    "economic_impact_aed_billions": 26.0,
+    "sources": [
+      "Al-Shamsi et al., 2022",
+      "Abdul-Rahman et al., 2024", 
+      "Al-Rifai et al., 2023",
+      "UNDP/WHO NCD Investment Case, 2021"
+    ]
+  },
+  "diabetes_mellitus": {
+    "prevalence_adult_low": 0.123,
+    "prevalence_adult_high": 0.207,
+    "prevalence_prediabetes": 0.35,
+    "undiagnosed_rate_low": 0.35,
+    "undiagnosed_rate_high": 0.64,
+    "annual_incidence_per_1000": 8.7,
+    "progression_to_complications": {
+      "microvascular_annual_risk": 0.085,
+      "macrovascular_annual_risk": 0.045,
+      "cost_multiplier_microvascular": 2.2,
+      "cost_multiplier_macrovascular": 6.4,
+      "cost_multiplier_both": 9.4
+    },
+    "projected_cases_2021": 990000,
+    "projected_cases_2030": 1340000,
+    "projected_cases_2040": 1980000,
+    "economic_burden_aed_billions_2021": 7.68,
+    "economic_burden_aed_billions_2031": 12.49,
+    "sources": [
+      "International Diabetes Federation, 2024",
+      "Al-Awadhi et al., 2023",
+      "Al-Maskari et al., 2010",
+      "UnitedHealth Group, 2010"
+    ]
+  },
+  "obesity_overweight": {
+    "prevalence_adult_obesity": 0.25,
+    "prevalence_adult_overweight": 0.60,
+    "prevalence_child_overweight_obese": 0.40,
+    "projected_overweight_obese_2035": 7500000,
+    "deaths_attributable_2019": 7622,
+    "economic_impact_gdp_percentage_2035": 0.05,
+    "economic_impact_usd_billions_2035": 12.0,
+    "productivity_losses_usd_billions_2035": 30.7,
+    "sources": [
+      "World Obesity Federation, 2024",
+      "Al-Rifai et al., 2023",
+      "Fast Company Middle East, 2024"
+    ]
+  },
+  "cancer_epidemiology": {
+    "breast_cancer": {
+      "incidence_per_100k_women": 24.9,
+      "mortality_reduction_screening": 0.20,
+      "screening_eligible_population": 456000,
+      "current_screening_coverage": 0.45
+    },
+    "colorectal_cancer": {
+      "incidence_per_100k": 19.2,
+      "mortality_reduction_screening": 0.18,
+      "screening_eligible_population": 670000,
+      "colonoscopy_uptake_rate": 0.42,
+      "fit_test_adherence": 0.65
+    },
+    "total_cancer_deaths_annual": 2100,
+    "ncd_cancer_mortality_percentage": 0.15,
+    "sources": [
+      "UAE Cancer Registry",
+      "Bretthauer et al. (NordICC), 2022",
+      "Global Cancer Observatory"
+    ]
+  },
+  "osteoporosis_fractures": {
+    "hip_fracture_rate_per_1000_75plus": 2.1,
+    "vertebral_fracture_rate_per_1000_65plus": 5.8,
+    "wrist_fracture_rate_per_1000_50plus": 3.2,
+    "target_population_70plus": 200000,
+    "target_population_75plus": 134000,
+    "high_risk_population": 234000,
+    "osteoporosis_prevalence_postmenopausal": 0.34,
+    "vitamin_d_deficiency_prevalence": 0.82,
+    "sources": [
+      "Osteoporosis International guidelines",
+      "Tosteson et al., 2008",
+      "UAE osteoporosis studies"
+    ]
+  },
+  "alzheimer_dementia": {
+    "prevalence_65plus": 0.089,
+    "prevalence_75plus": 0.16,
+    "annual_incidence_per_1000_65plus": 15.2,
+    "high_risk_population": 30000,
+    "risk_factors": {
+      "diabetes": 0.207,
+      "hypertension": 0.31,
+      "physical_inactivity": 0.39,
+      "social_isolation": 0.25
+    },
+    "progression_mild_to_moderate_annual": 0.32,
+    "progression_moderate_to_severe_annual": 0.28,
+    "caregiver_burden_hours_daily": 12,
+    "economic_burden_uae_2021_aed_billions": 3.89,
+    "sources": [
+      "Al-Raddadi et al., 2023",
+      "Alzheimer's Disease International",
+      "Harvard T.H. Chan School of Public Health, 2024"
+    ]
+  },
+  "intervention_effectiveness": {
+    "cardiovascular_prevention": {
+      "statin_therapy_event_reduction": 0.25,
+      "hypertension_control_event_reduction": 0.30,
+      "lifestyle_modification_event_reduction": 0.35,
+      "salt_reduction_policy_event_reduction": 0.12,
+      "combined_intervention_effectiveness": 0.70
+    },
+    "diabetes_prevention": {
+      "intensive_lifestyle_dpp_reduction": 0.58,
+      "metformin_dpp_reduction": 0.31,
+      "combined_lifestyle_metformin_reduction": 0.60,
+      "standard_lifestyle_reduction": 0.35
+    },
+    "cancer_screening": {
+      "breast_mammography_mortality_reduction": 0.20,
+      "colorectal_screening_mortality_reduction": 0.18,
+      "early_detection_stage_shift": 0.65,
+      "combined_screening_effectiveness": 0.55
+    },
+    "osteoporosis_prevention": {
+      "fracture_reduction_treatment": 0.50,
+      "fracture_reduction_lifestyle": 0.25,
+      "combined_prevention_effectiveness": 0.65
+    },
+    "alzheimer_prevention": {
+      "mind_diet_risk_reduction": 0.53,
+      "multidomain_intervention_reduction": 0.30,
+      "combined_intervention_effectiveness": 0.50
+    }
+  },
+  "healthcare_utilization": {
+    "primary_care_visits_per_person_annual": 3.2,
+    "specialist_visits_per_person_annual": 1.8,
+    "emergency_department_visits_per_1000": 420,
+    "hospitalization_rate_per_1000": 95,
+    "screening_program_participation_rates": {
+      "breast_cancer": 0.45,
+      "colorectal_cancer": 0.35,
+      "diabetes_screening": 0.60,
+      "hypertension_screening": 0.70,
+      "cholesterol_screening": 0.55
+    }
+  },
+  "quality_of_life_utilities": {
+    "healthy_adult": 1.000,
+    "hypertension_controlled": 0.920,
+    "diabetes_uncomplicated": 0.780,
+    "diabetes_complications": 0.650,
+    "post_myocardial_infarction": 0.680,
+    "post_stroke": 0.520,
+    "cancer_survivor": 0.820,
+    "hip_fracture_post": 0.640,
+    "mild_cognitive_impairment": 0.830,
+    "mild_dementia": 0.690,
+    "moderate_dementia": 0.450,
+    "severe_dementia": 0.230,
+    "source": "UAE EQ-5D-5L value set (Papadimitropoulos et al., 2024)"
+  },
+  "validation_notes": {
+    "data_limitations": [
+      "Some parameters extrapolated from regional MENA data where UAE-specific data unavailable",
+      "Temporal variations in disease prevalence not captured",
+      "Expatriate vs. Emirati population health differences averaged",
+      "Private sector utilization patterns may differ from public estimates"
+    ],
+    "uncertainty_ranges": {
+      "prevalence_estimates": "±10-15%",
+      "cost_estimates": "±20-25%", 
+      "effectiveness_estimates": "±15-20%",
+      "utility_estimates": "±10%"
+    },
+    "last_validation": "2025-08-11",
+    "next_update_due": "2026-08-11"
+  }
+}
