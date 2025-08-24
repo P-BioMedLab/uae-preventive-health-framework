@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevention vs Treatment Cost Analysis</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .disease-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .disease-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .disease-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .cost-comparison {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .cost-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .cost-label {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        
+        .cost-value {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        .prevention-cost {
+            color: #27ae60;
+        }
+        
+        .treatment-cost {
+            color: #e74c3c;
+        }
+        
+        .savings-highlight {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .chart-section {
+            margin-top: 40px;
+        }
+        
+        .chart-container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+        
+        .chart-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .key-insights {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .key-insights h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        
+        .insight-list {
+            list-style: none;
+        }
+        
+        .insight-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .insight-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Prevention vs Treatment Cost Analysis</h1>
+            <p>Economic Comparison Across Major Disease Areas in the UAE</p>
+        </div>
+        
+        <div class="content">
+            <div class="comparison-grid">
+                <!-- Cardiovascular Disease -->
+                <div class="disease-card">
+                    <div class="disease-title">Cardiovascular Disease</div>
+                    <div class="cost-comparison">
+                        <div class="cost-item">
+                            <div class="cost-label">Annual Prevention</div>
+                            <div class="cost-value prevention-cost">AED 1,500</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">vs</div>
+                            <div style="font-size: 2em; color: #95a5a6;">⚡</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">CABG Surgery</div>
+                            <div class="cost-value treatment-cost">AED 145,000</div>
+                        </div>
+                    </div>
+                    <div class="savings-highlight">
+                        <strong>97x Cost Difference</strong><br>
+                        Prevention is 97 times less expensive
+                    </div>
+                </div>
+                
+                <!-- Type 2 Diabetes -->
+                <div class="disease-card">
+                    <div class="disease-title">Type 2 Diabetes</div>
+                    <div class="cost-comparison">
+                        <div class="cost-item">
+                            <div class="cost-label">Prevention Program</div>
+                            <div class="cost-value prevention-cost">AED 1,890</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">vs</div>
+                            <div style="font-size: 2em; color: #95a5a6;">⚡</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">Annual Complications</div>
+                            <div class="cost-value treatment-cost">AED 55,334</div>
+                        </div>
+                    </div>
+                    <div class="savings-highlight">
+                        <strong>29x Cost Difference</strong><br>
+                        One-time prevention vs annual treatment
+                    </div>
+                </div>
+                
+                <!-- Cancer Screening -->
+                <div class="disease-card">
+                    <div class="disease-title">Colorectal Cancer</div>
+                    <div class="cost-comparison">
+                        <div class="cost-item">
+                            <div class="cost-label">FIT Screening</div>
+                            <div class="cost-value prevention-cost">AED 150</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">vs</div>
+                            <div style="font-size: 2em; color: #95a5a6;">⚡</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">Cancer Treatment</div>
+                            <div class="cost-value treatment-cost">AED 200,000+</div>
+                        </div>
+                    </div>
+                    <div class="savings-highlight">
+                        <strong>1,333x Cost Difference</strong><br>
+                        Early detection saves lives and costs
+                    </div>
+                </div>
+                
+                <!-- Osteoporosis -->
+                <div class="disease-card">
+                    <div class="disease-title">Osteoporosis</div>
+                    <div class="cost-comparison">
+                        <div class="cost-item">
+                            <div class="cost-label">Annual Prevention</div>
+                            <div class="cost-value prevention-cost">AED 1,500</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">vs</div>
+                            <div style="font-size: 2em; color: #95a5a6;">⚡</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">Hip Fracture Care</div>
+                            <div class="cost-value treatment-cost">AED 275,600+</div>
+                        </div>
+                    </div>
+                    <div class="savings-highlight">
+                        <strong>184x Cost Difference</strong><br>
+                        Includes surgery + long-term care
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-section">
+                <div class="chart-container">
+                    <div class="chart-title">Cost Per Disease Event: Prevention vs Treatment</div>
+                    <canvas id="costComparisonChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">Cumulative Cost Avoidance Over 10 Years</div>
+                    <canvas id="cumulativeSavingsChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="key-insights">
+                <h3>Key Economic Insights</h3>
+                <ul class="insight-list">
+                    <li>Prevention interventions cost 29-1,333 times less than treating established disease</li>
+                    <li>The UAE could avoid AED 40.5 billion in healthcare costs through strategic prevention</li>
+                    <li>Early intervention in cardiovascular disease alone saves AED 143,500 per prevented event</li>
+                    <li>Cancer screening programs deliver among the highest cost-effectiveness ratios globally</li>
+                    <li>Osteoporosis prevention eliminates the need for expensive long-term care facilities</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+        Chart.defaults.color = '#495057';
+
+        // Cost Comparison Chart
+        const costCtx = document.getElementById('costComparisonChart').getContext('2d');
+        new Chart(costCtx, {
+            type: 'bar',
+            data: {
+                labels: ['CVD', 'Diabetes', 'Colorectal Cancer', 'Breast Cancer', 'Osteoporosis'],
+                datasets: [
+                    {
+                        label: 'Prevention Cost (AED)',
+                        data: [1500, 1890, 150, 750, 1500],
+                        backgroundColor: 'rgba(46, 204, 113, 0.8)',
+                        borderColor: 'rgba(46, 204, 113, 1)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Treatment Cost (AED)',
+                        data: [145000, 55334, 200000, 50000, 275600],
+                        backgroundColor: 'rgba(231, 76, 60, 0.8)',
+                        borderColor: 'rgba(231, 76, 60, 1)',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        type: 'logarithmic',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Cost (AED) - Logarithmic Scale'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': AED ' + context.parsed.y.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Cumulative Savings Chart
+        const savingsCtx = document.getElementById('cumulativeSavingsChart').getContext('2d');
+        new Chart(savingsCtx, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6', 'Year 7', 'Year 8', 'Year 9', 'Year 10'],
+                datasets: [
+                    {
+                        label: 'Cumulative Investment',
+                        data: [2.0, 4.2, 6.8, 9.8, 13.2, 16.8, 18.2, 19.4, 20.0, 20.4],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Cumulative Savings',
+                        data: [1.2, 3.8, 8.2, 14.5, 22.8, 32.1, 38.9, 44.2, 48.1, 52.4],
+                        borderColor: '#2ecc71',
+                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Amount (AED Billions)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

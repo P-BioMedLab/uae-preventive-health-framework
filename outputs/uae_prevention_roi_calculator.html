@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<!--
+UAE Preventive Medicine ROI Calculator v1.1.0
+Interactive healthcare investment analysis tool
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE Preventive Medicine ROI Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 15px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            height: calc(100vh - 30px);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 3px;
+        }
+        
+        .header p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .input-panel {
+            background: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #e9ecef;
+            overflow-y: auto;
+        }
+        
+        .output-panel {
+            padding: 20px;
+            background: white;
+            overflow-y: auto;
+        }
+        
+        .section-title {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 6px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #34495e;
+            font-size: 0.9em;
+        }
+        
+        .input-group select,
+        .input-group input[type="range"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #bdc3c7;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        
+        .slider-container {
+            position: relative;
+        }
+        
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #ddd;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        
+        .slider:hover {
+            opacity: 1;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #3498db;
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #3498db;
+            cursor: pointer;
+        }
+        
+        .slider-value {
+            text-align: center;
+            margin-top: 6px;
+            font-weight: 600;
+            color: #3498db;
+            font-size: 0.9em;
+        }
+        
+        .kpi-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .kpi-card h3 {
+            font-size: 1.6em;
+            margin-bottom: 4px;
+        }
+        
+        .kpi-card p {
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+        
+        .chart-container {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .chart-title {
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .chart {
+            width: 100%;
+            height: 120px;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e9ecef;
+        }
+        
+        .cost-benefit-bars {
+            display: flex;
+            height: 100px;
+            align-items: end;
+            justify-content: center;
+            gap: 25px;
+        }
+        
+        .bar {
+            width: 60px;
+            border-radius: 4px 4px 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        
+        .cost-bar {
+            background: linear-gradient(to top, #e74c3c, #c0392b);
+        }
+        
+        .benefit-bar {
+            background: linear-gradient(to top, #27ae60, #229954);
+        }
+        
+        .bar-label {
+            margin-top: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.85em;
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #2c3e50;
+            font-weight: 700;
+            font-size: 0.75em;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2px 5px;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            white-space: nowrap;
+            min-width: 65px;
+            text-align: center;
+        }
+        
+        .health-impact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            padding: 25px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .health-metric {
+            text-align: center;
+            padding: 8px;
+        }
+        
+        .health-metric-value {
+            font-size: 1.6em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        .health-metric-label {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            line-height: 1.3;
+            font-weight: 500;
+        }
+        
+        .tornado-chart {
+            width: 100%;
+            height: 180px;
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .tornado-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            height: 25px;
+        }
+        
+        .tornado-label {
+            width: 120px;
+            font-size: 0.8em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .tornado-bar-container {
+            flex: 1;
+            height: 16px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            position: relative;
+            margin: 0 8px;
+        }
+        
+        .tornado-bar-fill {
+            height: 100%;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+        }
+        
+        .tornado-value {
+            width: 50px;
+            text-align: right;
+            font-size: 0.75em;
+            color: #7f8c8d;
+        }
+        
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 0.8em;
+            color: #856404;
+        }
+        
+        .preset-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .preset-btn {
+            padding: 6px 12px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background 0.3s;
+        }
+        
+        .preset-btn:hover {
+            background: #2980b9;
+        }
+        
+        .preset-btn.active {
+            background: #27ae60;
+        }
+        
+        .health-metric-value.events { color: #27ae60; }
+        .health-metric-value.deaths { color: #e74c3c; }
+        .health-metric-value.qalys { color: #3498db; }
+        .health-metric-value.benefit { color: #9b59b6; }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-panel {
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+            }
+            
+            .kpi-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .health-impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>UAE Preventive Medicine ROI Calculator</h1>
+            <p>Data-Driven Framework for Preventive Health Investment Analysis</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="input-panel">
+                <h2 class="section-title">Scenario Parameters</h2>
+                
+                <div class="input-group">
+                    <label for="intervention">Intervention Type:</label>
+                    <select id="intervention">
+                        <option value="comprehensive">Comprehensive Portfolio</option>
+                        <option value="cvd">Cardiovascular Disease Prevention</option>
+                        <option value="diabetes">Type 2 Diabetes Prevention</option>
+                        <option value="cancer">Cancer Screening (Breast & Colorectal)</option>
+                        <option value="alzheimer">Alzheimer's Disease Prevention</option>
+                        <option value="osteoporosis">Osteoporosis Prevention</option>
+                    </select>
+                </div>
+
+                <div class="preset-buttons">
+                    <button class="preset-btn active" onclick="loadOptimalParameters()">Baseline</button>
+                    <button class="preset-btn" onclick="loadConservativeParameters()">Conservative</button>
+                    <button class="preset-btn" onclick="loadAggressiveParameters()">Optimistic</button>
+                </div>
+                
+                <div class="input-group">
+                    <label for="population">Target Population Size:</label>
+                    <div class="slider-container">
+                        <input type="range" id="population" class="slider" min="20000" max="3000000" step="5000" value="2640000">
+                        <div class="slider-value" id="populationValue">2,640,000</div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="costPerPerson">Cost per Person (AED):</label>
+                    <div class="slider-container">
+                        <input type="range" id="costPerPerson" class="slider" min="400" max="10000" step="50" value="773">
+                        <div class="slider-value" id="costValue">AED 773</div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="uptake">Program Uptake Rate (%):</label>
+                    <div class="slider-container">
+                        <input type="range" id="uptake" class="slider" min="30" max="95" step="5" value="80">
+                        <div class="slider-value" id="uptakeValue">80%</div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="effectiveness">Intervention Effectiveness (%):</label>
+                    <div class="slider-container">
+                        <input type="range" id="effectiveness" class="slider" min="30" max="80" step="5" value="62">
+                        <div class="slider-value" id="effectivenessValue">62%</div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="timeHorizon">Time Horizon (Years):</label>
+                    <div class="slider-container">
+                        <input type="range" id="timeHorizon" class="slider" min="5" max="20" step="5" value="10">
+                        <div class="slider-value" id="timeValue">10 years</div>
+                    </div>
+                </div>
+                
+                <div class="disclaimer">
+                    <strong>Note:</strong> Calculator provides estimates based on simplified scaling from full Markov model results. Time horizons use 3% discounting. Conservative and optimistic scenarios use 95% CI bounds from Monte Carlo analysis.
+                </div>
+            </div>
+            
+            <div class="output-panel">
+                <h2 class="section-title">Results & Analysis</h2>
+                
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <h3 id="roiValue">157%</h3>
+                        <p>Return on Investment</p>
+                    </div>
+                    <div class="kpi-card">
+                        <h3 id="costPerQaly">AED 62,600</h3>
+                        <p>Cost per QALY</p>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">Investment vs. Benefits (10-Year Projection)</div>
+                    <div class="chart">
+                        <div class="cost-benefit-bars">
+                            <div class="bar cost-bar" id="costBar" style="height: 50px;">
+                                <div class="bar-value" id="costBarValue">AED 20.4B</div>
+                                <div class="bar-label">Investment</div>
+                            </div>
+                            <div class="bar benefit-bar" id="benefitBar" style="height: 120px;">
+                                <div class="bar-value" id="benefitBarValue">AED 52.4B</div>
+                                <div class="bar-label">Benefits</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">Health Impact Metrics</div>
+                    <div class="health-impact-grid">
+                        <div class="health-metric">
+                            <div class="health-metric-value events" id="eventsAvoided">158,080</div>
+                            <div class="health-metric-label">Disease Events Prevented</div>
+                        </div>
+                        <div class="health-metric">
+                            <div class="health-metric-value deaths" id="deathsAvoided">16,325</div>
+                            <div class="health-metric-label">Premature Deaths Averted</div>
+                        </div>
+                        <div class="health-metric">
+                            <div class="health-metric-value qalys" id="qalysGained">326,280</div>
+                            <div class="health-metric-label">QALYs Gained</div>
+                        </div>
+                        <div class="health-metric">
+                            <div class="health-metric-value benefit" id="netBenefit">AED 32.0B</div>
+                            <div class="health-metric-label">Net Societal Benefit</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">Sensitivity Analysis: Key Drivers of ROI</div>
+                    <div class="tornado-chart">
+                        <div class="tornado-bar">
+                            <div class="tornado-label">Effectiveness</div>
+                            <div class="tornado-bar-container">
+                                <div class="tornado-bar-fill" id="effectivenessImpact" style="width: 100%;"></div>
+                            </div>
+                            <div class="tornado-value" id="effectivenessImpactValue">±39%</div>
+                        </div>
+                        <div class="tornado-bar">
+                            <div class="tornado-label">Cost per Person</div>
+                            <div class="tornado-bar-container">
+                                <div class="tornado-bar-fill" id="costImpact" style="width: 81%;"></div>
+                            </div>
+                            <div class="tornado-value" id="costImpactValue">±31%</div>
+                        </div>
+                        <div class="tornado-bar">
+                            <div class="tornado-label">Uptake Rate</div>
+                            <div class="tornado-bar-container">
+                                <div class="tornado-bar-fill" id="uptakeImpact" style="width: 61%;"></div>
+                            </div>
+                            <div class="tornado-value" id="uptakeImpactValue">±24%</div>
+                        </div>
+                        <div class="tornado-bar">
+                            <div class="tornado-label">Time Horizon</div>
+                            <div class="tornado-bar-container">
+                                <div class="tornado-bar-fill" id="timeImpact" style="width: 51%;"></div>
+                            </div>
+                            <div class="tornado-value" id="timeImpactValue">±20%</div>
+                        </div>
+                        <div class="tornado-bar">
+                            <div class="tornado-label">Population Size</div>
+                            <div class="tornado-bar-container">
+                                <div class="tornado-bar-fill" id="populationImpact" style="width: 40%;"></div>
+                            </div>
+                            <div class="tornado-value" id="populationImpactValue">±16%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const interventionData = {
+            comprehensive: {
+                baseROI: 157,
+                baseCostPerQaly: 62600,
+                basePopulation: 2640000,
+                baseCost: 773,
+                baseUptake: 0.80,
+                baseEffectiveness: 0.62,
+                healthImpact: {
+                    events: 158080,
+                    deaths: 16325,
+                    qalys: 326280
+                },
+                investment: 20.4 * 1e9,
+                benefits: 52.4 * 1e9
+            },
+            cvd: {
+                baseROI: 180,
+                baseCostPerQaly: 61400,
+                basePopulation: 500000,
+                baseCost: 1640,
+                baseUptake: 0.80,
+                baseEffectiveness: 0.75,
+                healthImpact: {
+                    events: 12450,
+                    deaths: 3120,
+                    qalys: 133800
+                },
+                investment: 8.2 * 1e9,
+                benefits: 22.96 * 1e9
+            },
+            diabetes: {
+                baseROI: 110,
+                baseCostPerQaly: 32100,
+                basePopulation: 750000,
+                baseCost: 413,
+                baseUptake: 0.80,
+                baseEffectiveness: 0.58,
+                healthImpact: {
+                    events: 127500,
+                    deaths: 4200,
+                    qalys: 96600
+                },
+                investment: 3.1 * 1e9,
+                benefits: 6.51 * 1e9
+            },
+            cancer: {
+                baseROI: 145,
+                baseCostPerQaly: 42200,
+                basePopulation: 1126000,
+                baseCost: 426,
+                baseUptake: 0.80,
+                baseEffectiveness: 0.52,
+                healthImpact: {
+                    events: 8420,
+                    deaths: 3100,
+                    qalys: 113720
+                },
+                investment: 4.8 * 1e9,
+                benefits: 11.76 * 1e9
+            },
+            alzheimer: {
+                baseROI: 89,
+                baseCostPerQaly: 48900,
+                basePopulation: 30000,
+                baseCost: 9667,
+                baseUptake: 0.80,
+                baseEffectiveness: 0.50,
+                healthImpact: {
+                    events: 2700,
+                    deaths: 800,
+                    qalys: 59300
+                },
+                investment: 2.9 * 1e9,
+                benefits: 5.48 * 1e9
+            },
+            osteoporosis: {
+                baseROI: 84,
+                baseCostPerQaly: 35800,
+                basePopulation: 234000,
+                baseCost: 598,
+                baseUptake: 0.80,
+                baseEffectiveness: 0.65,
+                healthImpact: {
+                    events: 10530,
+                    deaths: 1200,
+                    qalys: 39100
+                },
+                investment: 1.4 * 1e9,
+                benefits: 2.58 * 1e9
+            }
+        };
+
+        function loadOptimalParameters() {
+            const intervention = document.getElementById('intervention').value;
+            const data = interventionData[intervention];
+            
+            document.getElementById('population').value = data.basePopulation;
+            document.getElementById('costPerPerson').value = data.baseCost;
+            document.getElementById('uptake').value = Math.round(data.baseUptake * 100);
+            document.getElementById('effectiveness').value = Math.round(data.baseEffectiveness * 100);
+            document.getElementById('timeHorizon').value = 10;
+            
+            updateSliderValues();
+            calculateResults();
+            updateActiveButton(0);
+        }
+
+        function loadConservativeParameters() {
+            const intervention = document.getElementById('intervention').value;
+            const data = interventionData[intervention];
+            
+            document.getElementById('population').value = Math.round(data.basePopulation * 0.90);
+            document.getElementById('costPerPerson').value = Math.round(data.baseCost * 1.25);
+            document.getElementById('uptake').value = Math.round(data.baseUptake * 0.80 * 100);
+            document.getElementById('effectiveness').value = Math.round(data.baseEffectiveness * 0.85 * 100);
+            document.getElementById('timeHorizon').value = 10;
+            
+            updateSliderValues();
+            calculateResults();
+            updateActiveButton(1);
+        }
+
+        function loadAggressiveParameters() {
+            const intervention = document.getElementById('intervention').value;
+            const data = interventionData[intervention];
+            
+            document.getElementById('population').value = Math.round(data.basePopulation * 1.10);
+            document.getElementById('costPerPerson').value = Math.round(data.baseCost * 0.85);
+            document.getElementById('uptake').value = Math.round(Math.min(data.baseUptake * 1.15, 0.95) * 100);
+            document.getElementById('effectiveness').value = Math.round(Math.min(data.baseEffectiveness * 1.15, 0.80) * 100);
+            document.getElementById('timeHorizon').value = 10;
+            
+            updateSliderValues();
+            calculateResults();
+            updateActiveButton(2);
+        }
+
+        function updateActiveButton(index) {
+            const buttons = document.querySelectorAll('.preset-btn');
+            buttons.forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+        }
+
+        function updateSliderValues() {
+            document.getElementById('populationValue').textContent = 
+                parseInt(document.getElementById('population').value).toLocaleString();
+            document.getElementById('costValue').textContent = 
+                'AED ' + parseInt(document.getElementById('costPerPerson').value).toLocaleString();
+            document.getElementById('uptakeValue').textContent = 
+                document.getElementById('uptake').value + '%';
+            document.getElementById('effectivenessValue').textContent = 
+                document.getElementById('effectiveness').value + '%';
+            document.getElementById('timeValue').textContent = 
+                document.getElementById('timeHorizon').value + ' years';
+        }
+
+        function formatAED(x){
+            const abs = Math.abs(x);
+            if (abs >= 1e9) return 'AED ' + (x/1e9).toFixed(1) + 'B';
+            if (abs >= 1e6) return 'AED ' + (x/1e6).toFixed(1) + 'M';
+            return 'AED ' + Math.round(x).toLocaleString();
+        }
+
+        function calculateDiscountFactor(years, discountRate = 0.03) {
+            let factor = 0;
+            for (let t = 0; t < years; t++) {
+                factor += 1 / Math.pow(1 + discountRate, t);
+            }
+            return factor;
+        }
+
+        function getTimeHorizonMultiplier(timeHorizon) {
+            const discount5yr = calculateDiscountFactor(5);
+            const discount10yr = calculateDiscountFactor(10);
+            const discount20yr = calculateDiscountFactor(20);
+            
+            const baselineFactor = discount10yr;
+            
+            switch(timeHorizon) {
+                case 5:
+                    return discount5yr / baselineFactor;
+                case 10:
+                    return 1.0;
+                case 20:
+                    return discount20yr / baselineFactor;
+                default:
+                    return calculateDiscountFactor(timeHorizon) / baselineFactor;
+            }
+        }
+
+        function calculateSensitivityAnalysis(baseROI, currentParams) {
+            const sensitivity = {
+                effectiveness: baseROI * 0.246,
+                cost: baseROI * 0.20,
+                uptake: baseROI * 0.15,
+                time: baseROI * 0.125,
+                population: baseROI * 0.099
+            };
+
+            const maxImpact = Math.max(...Object.values(sensitivity));
+            
+            document.getElementById('effectivenessImpact').style.width = '100%';
+            document.getElementById('effectivenessImpactValue').textContent = '±' + Math.round(sensitivity.effectiveness) + '%';
+            
+            document.getElementById('costImpact').style.width = (sensitivity.cost / maxImpact * 100) + '%';
+            document.getElementById('costImpactValue').textContent = '±' + Math.round(sensitivity.cost) + '%';
+            
+            document.getElementById('uptakeImpact').style.width = (sensitivity.uptake / maxImpact * 100) + '%';
+            document.getElementById('uptakeImpactValue').textContent = '±' + Math.round(sensitivity.uptake) + '%';
+            
+            document.getElementById('timeImpact').style.width = (sensitivity.time / maxImpact * 100) + '%';
+            document.getElementById('timeImpactValue').textContent = '±' + Math.round(sensitivity.time) + '%';
+            
+            document.getElementById('populationImpact').style.width = (sensitivity.population / maxImpact * 100) + '%';
+            document.getElementById('populationImpactValue').textContent = '±' + Math.round(sensitivity.population) + '%';
+        }
+
+        function calculateResults() {
+            const intervention = document.getElementById('intervention').value;
+            const population = parseInt(document.getElementById('population').value);
+            const costPerPerson = parseInt(document.getElementById('costPerPerson').value);
+            const uptake = parseInt(document.getElementById('uptake').value) / 100;
+            const effectiveness = parseInt(document.getElementById('effectiveness').value) / 100;
+            const timeHorizon = parseInt(document.getElementById('timeHorizon').value);
+
+            const data = interventionData[intervention];
+            
+            const isBaseline = (
+                Math.abs(population - data.basePopulation) / data.basePopulation < 0.05 &&
+                Math.abs(costPerPerson - data.baseCost) / data.baseCost < 0.05 &&
+                Math.abs(uptake - data.baseUptake) / data.baseUptake < 0.05 &&
+                Math.abs(effectiveness - data.baseEffectiveness) / data.baseEffectiveness < 0.05 &&
+                timeHorizon === 10
+            );
+            
+            let roi, costPerQaly, totalInvestment, totalBenefits, netBenefit;
+            let events, deaths, qalys;
+            
+            if (isBaseline) {
+                roi = data.baseROI;
+                costPerQaly = data.baseCostPerQaly;
+                totalInvestment = data.investment;
+                totalBenefits = data.benefits;
+                netBenefit = totalBenefits - totalInvestment;
+                events = data.healthImpact.events;
+                deaths = data.healthImpact.deaths;
+                qalys = data.healthImpact.qalys;
+            } else {
+                const popRatio = population / data.basePopulation;
+                const costRatio = costPerPerson / data.baseCost;
+                const uptakeRatio = uptake / data.baseUptake;
+                const effRatio = effectiveness / data.baseEffectiveness;
+                
+                const timeMultiplier = getTimeHorizonMultiplier(timeHorizon);
+                
+                roi = Math.round(data.baseROI * Math.pow(uptakeRatio, 0.4) * Math.pow(effRatio, 0.5) * Math.pow(1/costRatio, 0.3) * Math.pow(timeMultiplier, 0.2));
+                costPerQaly = Math.round(data.baseCostPerQaly * costRatio * (1/uptakeRatio) * (1/effRatio));
+                
+                totalInvestment = data.investment * popRatio * costRatio * uptakeRatio * timeMultiplier;
+                totalBenefits = totalInvestment * (roi / 100 + 1);
+                netBenefit = totalBenefits - totalInvestment;
+                
+                events = Math.round(data.healthImpact.events * popRatio * uptakeRatio * effRatio * timeMultiplier);
+                deaths = Math.round(data.healthImpact.deaths * popRatio * uptakeRatio * effRatio * timeMultiplier);
+                qalys = Math.round(data.healthImpact.qalys * popRatio * uptakeRatio * effRatio * timeMultiplier);
+            }
+
+            document.getElementById('roiValue').textContent = roi + '%';
+            document.getElementById('costPerQaly').textContent = 'AED ' + costPerQaly.toLocaleString();
+            
+            const maxHeight = 100;
+            const costHeight = Math.min(maxHeight, (totalInvestment / totalBenefits) * maxHeight);
+            const benefitHeight = maxHeight;
+            
+            document.getElementById('costBar').style.height = costHeight + 'px';
+            document.getElementById('benefitBar').style.height = benefitHeight + 'px';
+            
+            document.getElementById('costBarValue').textContent = formatAED(totalInvestment);
+            document.getElementById('benefitBarValue').textContent = formatAED(totalBenefits);
+            
+            document.getElementById('eventsAvoided').textContent = events.toLocaleString();
+            document.getElementById('deathsAvoided').textContent = deaths.toLocaleString();
+            document.getElementById('qalysGained').textContent = qalys.toLocaleString();
+            document.getElementById('netBenefit').textContent = formatAED(netBenefit);
+
+            calculateSensitivityAnalysis(roi, {
+                population, costPerPerson, uptake, effectiveness, timeHorizon
+            });
+        }
+
+        const sliders = ['population', 'costPerPerson', 'uptake', 'effectiveness', 'timeHorizon'];
+        sliders.forEach(slider => {
+            document.getElementById(slider).addEventListener('input', function() {
+                updateSliderValues();
+                calculateResults();
+            });
+        });
+
+        document.getElementById('intervention').addEventListener('change', function() {
+            loadOptimalParameters();
+        });
+
+        loadOptimalParameters();
+    </script>
+</body>
+</html>
