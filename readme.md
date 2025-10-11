@@ -145,22 +145,17 @@ The ROI framework provides foundational architecture for precision medicine scen
 | Annual Cycle Length | May not capture short-term clinical events | Conservative effectiveness estimates |
 | Health State Simplification | Disease progression more complex than modeled | Validated transition probabilities from literature |
 
-### Detailed Methodological Limitations
+### Methodological Limitations
 - **Limited UAE-Specific Cost Data:** International costs adjusted using purchasing power parity and healthcare-specific inflation where local data unavailable
 - **Epidemiological Projections:** Based on current disease trends; may not reflect future lifestyle or environmental changes
 - **Clinical Trial Generalizability:** International efficacy data may not fully reflect UAE population characteristics
 - **Adherence Assumptions:** Real-world program uptake may differ from controlled study environments
 - **Fixed Discount Rate:** 3% rate is standard for health economic evaluations; sensitivity analysis recommended for specific applications
-- **Societal Perspective:** Productivity costs estimated using human capital approach; may over- or underestimate economic impact
 - **Quality-Adjusted Life Years:** UAE EQ-5D-5L value set recently developed; long-term validation ongoing
-- **Technology Cost Projections:** Precision medicine costs assumed to decrease over time; adoption rates uncertain
 - **20-Year Maximum Horizon:** Long-term benefits beyond model scope not captured
 - **Static Population Model:** Does not account for demographic transitions or migration patterns
-- **Healthcare System Evolution:** Assumes current care delivery models; may not reflect future innovations
-- **Intervention Interaction Effects:** Models assume independent intervention effects; combination synergies not fully captured
 - **Parameter Uncertainty:** While probabilistic sensitivity analysis conducted, some parameters have wide confidence intervals
 - **External Validation:** Framework calibrated to available data but lacks prospective validation in UAE setting
-- **Budget Impact Timing:** Implementation costs front-loaded; actual rollout may be more gradual
 - **Healthcare System Capacity:** Assumes sufficient infrastructure for intervention scale-up
 
 These limitations are inherent to health economic modeling and do not invalidate the framework's utility for strategic decision-making. The model provides the best available evidence while acknowledging uncertainty. Regular parameter updates and real-world validation will enhance accuracy over time.
